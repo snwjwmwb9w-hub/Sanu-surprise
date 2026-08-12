@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For My Sanu ❤</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #ff758c, #ff7eb3);
+      color: white;
+      text-align: center;
+    }
+
+    .card {
+      width: 90%;
+      max-width: 520px;
+      padding: 35px 25px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 30px;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+      z-index: 10;
+    }
+
+    .heart {
+      font-size: 70px;
+      animation: beat 1.2s infinite;
+    }
+
+    h1 {
+      font-size: 36px;
+      margin: 15px 0;
+    }
+
+    p {
+      font-size: 18px;
+      line-height: 1.7;
+    }
+
+    .photo {
+      width: 190px;
+      height: 190px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 5px solid white;
+      margin: 10px auto 15px;
+      display: block;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 15px 30px;
+      border: none;
+      border-radius: 30px;
+      background: white;
+      color: #ff4f70;
+      font-size: 17px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .message {
+      font-size: 20px;
+      font-weight: bold;
+      line-height: 1.8;
+    }
+
+    .falling-heart {
+      position: fixed;
+      top: -40px;
+      animation: fall linear forwards;
+      pointer-events: none;
+    }
+
+    @keyframes beat {
+      50% {
+        transform: scale(1.2);
+      }
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="card" id="start">
+
+    <div class="heart">❤</div>
+
+    <h1>Hey You...</h1>
+
+    <p>
+      I made something special just for you. 🥰
+      <br>
+      Are you ready for a little surprise?
+    </p>
+
+    <button onclick="openSurprise()">
+      Open My Surprise ✨
+    </button>
+
+  </div>
+
+
+  <div class="card hidden" id="surprise">
+
+    <div class="heart">💖</div>
+
+    <img src="sanu copy.jpg" class="photo" alt="My Sanu">
+
+    <h1>For My Sanu ❤</h1>
+
+    <p class="message">
+      I Love You So Much Sanu ❤
+      <br><br>
+      Mero Budi, Mero Mutu 🫶
+      <br><br>
+      Chuppa Chuppa ❤💋🫶
+    </p>
+
+    <button onclick="moreLove()">
+      One More Surprise 💕
+    </button>
+
+  </div>
+
+
+  <script>
+
+    function openSurprise() {
+      document.getElementById("start").classList.add("hidden");
+      document.getElementById("surprise").classList.remove("hidden");
+      createHearts(40);
+    }
+
+    function moreLove() {
+      createHearts(70);
+      alert("I Love You So Much Sanu ❤💋🫶");
+    }
+
+    function createHearts(number) {
+
+      for (let i = 0; i < number; i++) {
+
+        const heart = document.createElement("div");
+
+        heart.className = "falling-heart";
+
+        heart.innerHTML =
+          ["❤", "💕", "💖", "💗", "💘", "🫶"]
+          [Math.floor(Math.random() * 6)];
+
+        heart.style.left = Math.random() * 100 + "vw";
+
+        heart.style.fontSize =
+          (18 + Math.random() * 25) + "px";
+
+        heart.style.animationDuration =
+          (3 + Math.random() * 4) + "s";
+
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+          heart.remove();
+        }, 7000);
+      }
+    }
+
+  </script>
+
+</body>
+</html>

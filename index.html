@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>For My Sanu ❤️</title>
 
   <style>
@@ -13,24 +14,48 @@
     body {
       margin: 0;
       min-height: 100vh;
+      overflow: hidden;
       display: flex;
       justify-content: center;
       align-items: center;
-      overflow: hidden;
       font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #ff758c, #ff7eb3);
+      background: radial-gradient(circle at top, #26113d, #090014 70%);
       color: white;
       text-align: center;
+    }
+
+    /* Night sky stars */
+    .star {
+      position: fixed;
+      width: 3px;
+      height: 3px;
+      background: white;
+      border-radius: 50%;
+      animation: twinkle 2s infinite alternate;
+      pointer-events: none;
+    }
+
+    @keyframes twinkle {
+      from {
+        opacity: 0.2;
+        transform: scale(0.7);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1.5);
+      }
     }
 
     .card {
       width: 90%;
       max-width: 520px;
-      padding: 35px 25px;
-      background: rgba(255,255,255,0.2);
+      padding: 32px 24px;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255,255,255,0.2);
       border-radius: 30px;
       backdrop-filter: blur(12px);
-      box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+      box-shadow: 0 20px 70px rgba(0,0,0,0.5);
       z-index: 10;
     }
 
@@ -40,7 +65,7 @@
     }
 
     h1 {
-      font-size: 36px;
+      font-size: 35px;
       margin: 15px 0;
     }
 
@@ -55,21 +80,27 @@
       object-fit: cover;
       border-radius: 50%;
       border: 5px solid white;
-      margin: 10px auto 15px;
       display: block;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      margin: 10px auto 20px;
+      box-shadow: 0 0 35px rgba(255,150,200,0.8);
+      animation: floatPhoto 3s ease-in-out infinite;
     }
 
     button {
       margin-top: 20px;
-      padding: 15px 30px;
+      padding: 15px 28px;
       border: none;
       border-radius: 30px;
       background: white;
-      color: #ff4f70;
+      color: #d6336c;
       font-size: 17px;
       font-weight: bold;
       cursor: pointer;
+      box-shadow: 0 8px 25px rgba(255,255,255,0.25);
+    }
+
+    button:active {
+      transform: scale(0.95);
     }
 
     .hidden {
@@ -82,11 +113,21 @@
       line-height: 1.8;
     }
 
-    .falling-heart {
+    .falling {
       position: fixed;
-      top: -40px;
-      animation: fall linear forwards;
+      top: -50px;
       pointer-events: none;
+      animation: fall linear forwards;
+      z-index: 5;
+    }
+
+    .rose {
+      position: fixed;
+      bottom: -60px;
+      font-size: 40px;
+      pointer-events: none;
+      animation: rise 5s linear forwards;
+      z-index: 8;
     }
 
     @keyframes beat {
@@ -95,11 +136,30 @@
       }
     }
 
+    @keyframes floatPhoto {
+      50% {
+        transform: translateY(-8px);
+      }
+    }
+
     @keyframes fall {
       to {
         transform: translateY(110vh) rotate(360deg);
         opacity: 0;
       }
+    }
+
+    @keyframes rise {
+      to {
+        transform: translateY(-115vh) rotate(20deg);
+        opacity: 0;
+      }
+    }
+
+    .final {
+      font-size: 22px;
+      line-height: 1.8;
+      font-weight: bold;
     }
   </style>
 </head>
@@ -128,6 +188,7 @@
 
   </div>
 
+
   <div class="card hidden" id="surprise">
 
     <div class="heart">💖</div>
@@ -150,7 +211,44 @@
 
   </div>
 
+
+  <div class="card hidden" id="final">
+
+    <div class="heart">🌹</div>
+
+    <h1>One Last Thing... ❤️</h1>
+
+    <p class="final">
+      No matter how many surprises I make,
+      <br><br>
+      You will always be
+      <br>
+      my favorite one. 🥹❤️
+      <br><br>
+      I Love You, Sanu. 💋🫶
+    </p>
+
+  </div>
+
+
   <script>
+
+    // Create night sky
+    for (let i = 0; i < 90; i++) {
+
+      const star = document.createElement("div");
+
+      star.className = "star";
+
+      star.style.left = Math.random() * 100 + "vw";
+      star.style.top = Math.random() * 100 + "vh";
+
+      star.style.animationDelay =
+        Math.random() * 3 + "s";
+
+      document.body.appendChild(star);
+    }
+
 
     function openSurprise() {
 
@@ -158,19 +256,32 @@
 
       music.play();
 
-      document.getElementById("start").classList.add("hidden");
+      document.getElementById("start")
+        .classList.add("hidden");
 
-      document.getElementById("surprise").classList.remove("hidden");
+      document.getElementById("surprise")
+        .classList.remove("hidden");
 
-      createHearts(40);
+      createHearts(45);
     }
+
 
     function moreLove() {
 
       createHearts(70);
+      createRoses(30);
 
-      alert("I Love You So Much Sanu ❤️💋🫶");
+      setTimeout(() => {
+
+        document.getElementById("surprise")
+          .classList.add("hidden");
+
+        document.getElementById("final")
+          .classList.remove("hidden");
+
+      }, 1200);
     }
+
 
     function createHearts(number) {
 
@@ -178,13 +289,14 @@
 
         const heart = document.createElement("div");
 
-        heart.className = "falling-heart";
+        heart.className = "falling";
 
         heart.innerHTML =
-          ["❤️","💕","💖","💗","💘","🫶"]
+          ["❤️", "💕", "💖", "💗", "💘", "🫶"]
           [Math.floor(Math.random() * 6)];
 
-        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.left =
+          Math.random() * 100 + "vw";
 
         heart.style.fontSize =
           (18 + Math.random() * 25) + "px";
@@ -196,6 +308,31 @@
 
         setTimeout(() => {
           heart.remove();
+        }, 7000);
+      }
+    }
+
+
+    function createRoses(number) {
+
+      for (let i = 0; i < number; i++) {
+
+        const rose = document.createElement("div");
+
+        rose.className = "rose";
+
+        rose.innerHTML = "🌹";
+
+        rose.style.left =
+          Math.random() * 100 + "vw";
+
+        rose.style.animationDuration =
+          (4 + Math.random() * 3) + "s";
+
+        document.body.appendChild(rose);
+
+        setTimeout(() => {
+          rose.remove();
         }, 7000);
       }
     }

@@ -1,343 +1,595 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>For My Sanu ❤️</title>
+<title>For My Sanu ❤️</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+<style>
 
-    body {
-      margin: 0;
-      min-height: 100vh;
-      overflow: hidden;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-family: Arial, sans-serif;
-      background: radial-gradient(circle at top, #26113d, #090014 70%);
-      color: white;
-      text-align: center;
-    }
+*{
+box-sizing:border-box;
+}
 
-    /* Night sky stars */
-    .star {
-      position: fixed;
-      width: 3px;
-      height: 3px;
-      background: white;
-      border-radius: 50%;
-      animation: twinkle 2s infinite alternate;
-      pointer-events: none;
-    }
+body{
+margin:0;
+min-height:100vh;
+overflow:hidden;
+font-family:Arial,sans-serif;
+background:radial-gradient(circle at top,#32124f,#08000f 75%);
+color:white;
+text-align:center;
+}
 
-    @keyframes twinkle {
-      from {
-        opacity: 0.2;
-        transform: scale(0.7);
-      }
+.star{
+position:fixed;
+width:3px;
+height:3px;
+background:white;
+border-radius:50%;
+animation:twinkle 2s infinite alternate;
+}
 
-      to {
-        opacity: 1;
-        transform: scale(1.5);
-      }
-    }
+@keyframes twinkle{
+from{opacity:.2}
+to{opacity:1}
+}
 
-    .card {
-      width: 90%;
-      max-width: 520px;
-      padding: 32px 24px;
-      background: rgba(255, 255, 255, 0.12);
-      border: 1px solid rgba(255,255,255,0.2);
-      border-radius: 30px;
-      backdrop-filter: blur(12px);
-      box-shadow: 0 20px 70px rgba(0,0,0,0.5);
-      z-index: 10;
-    }
+.card{
+width:90%;
+max-width:540px;
+max-height:90vh;
+overflow:auto;
+margin:5vh auto;
+padding:30px 22px;
+background:rgba(255,255,255,.12);
+border:1px solid rgba(255,255,255,.2);
+border-radius:30px;
+backdrop-filter:blur(12px);
+box-shadow:0 20px 70px rgba(0,0,0,.5);
+position:relative;
+z-index:10;
+}
 
-    .heart {
-      font-size: 70px;
-      animation: beat 1.2s infinite;
-    }
+.heart{
+font-size:65px;
+animation:beat 1.2s infinite;
+}
 
-    h1 {
-      font-size: 35px;
-      margin: 15px 0;
-    }
+@keyframes beat{
+50%{transform:scale(1.2)}
+}
 
-    p {
-      font-size: 18px;
-      line-height: 1.7;
-    }
+h1{
+font-size:32px;
+}
 
-    .photo {
-      width: 190px;
-      height: 190px;
-      object-fit: cover;
-      border-radius: 50%;
-      border: 5px solid white;
-      display: block;
-      margin: 10px auto 20px;
-      box-shadow: 0 0 35px rgba(255,150,200,0.8);
-      animation: floatPhoto 3s ease-in-out infinite;
-    }
+p{
+font-size:18px;
+line-height:1.7;
+}
 
-    button {
-      margin-top: 20px;
-      padding: 15px 28px;
-      border: none;
-      border-radius: 30px;
-      background: white;
-      color: #d6336c;
-      font-size: 17px;
-      font-weight: bold;
-      cursor: pointer;
-      box-shadow: 0 8px 25px rgba(255,255,255,0.25);
-    }
+button{
+margin:10px 5px;
+padding:14px 23px;
+border:0;
+border-radius:30px;
+background:white;
+color:#d6336c;
+font-size:16px;
+font-weight:bold;
+cursor:pointer;
+}
 
-    button:active {
-      transform: scale(0.95);
-    }
+button:active{
+transform:scale(.94);
+}
 
-    .hidden {
-      display: none;
-    }
+.hidden{
+display:none;
+}
 
-    .message {
-      font-size: 20px;
-      font-weight: bold;
-      line-height: 1.8;
-    }
+/* PHOTO GALLERY */
 
-    .falling {
-      position: fixed;
-      top: -50px;
-      pointer-events: none;
-      animation: fall linear forwards;
-      z-index: 5;
-    }
+.gallery img{
+width:210px;
+height:210px;
+object-fit:cover;
+border-radius:25px;
+border:4px solid white;
+box-shadow:0 0 30px rgba(255,150,200,.7);
+}
 
-    .rose {
-      position: fixed;
-      bottom: -60px;
-      font-size: 40px;
-      pointer-events: none;
-      animation: rise 5s linear forwards;
-      z-index: 8;
-    }
+.gallery button{
+font-size:22px;
+padding:10px 18px;
+}
 
-    @keyframes beat {
-      50% {
-        transform: scale(1.2);
-      }
-    }
+/* TYPEWRITER */
 
-    @keyframes floatPhoto {
-      50% {
-        transform: translateY(-8px);
-      }
-    }
+#letter{
+font-size:20px;
+min-height:160px;
+line-height:1.9;
+}
 
-    @keyframes fall {
-      to {
-        transform: translateY(110vh) rotate(360deg);
-        opacity: 0;
-      }
-    }
+/* LOVE REASONS */
 
-    @keyframes rise {
-      to {
-        transform: translateY(-115vh) rotate(20deg);
-        opacity: 0;
-      }
-    }
+.reason{
+font-size:24px;
+font-weight:bold;
+min-height:70px;
+}
 
-    .final {
-      font-size: 22px;
-      line-height: 1.8;
-      font-weight: bold;
-    }
-  </style>
+/* SECRET */
+
+.secretBox{
+font-size:22px;
+padding:20px;
+}
+
+/* FALLING EFFECTS */
+
+.falling{
+position:fixed;
+top:-50px;
+pointer-events:none;
+animation:fall linear forwards;
+z-index:5;
+}
+
+.rose{
+position:fixed;
+bottom:-60px;
+font-size:40px;
+animation:rise linear forwards;
+z-index:8;
+pointer-events:none;
+}
+
+@keyframes fall{
+to{
+transform:translateY(110vh) rotate(360deg);
+opacity:0;
+}
+}
+
+@keyframes rise{
+to{
+transform:translateY(-115vh) rotate(20deg);
+opacity:0;
+}
+}
+
+/* FINAL */
+
+.finalTitle{
+font-size:38px;
+}
+
+.bigLove{
+font-size:70px;
+animation:beat 1s infinite;
+}
+
+</style>
 </head>
 
 <body>
 
-  <audio id="bgMusic" loop>
-    <source src="55.mp3" type="audio/mpeg">
-  </audio>
+<audio id="bgMusic" loop>
+<source src="55.mp3" type="audio/mpeg">
+</audio>
 
-  <div class="card" id="start">
 
-    <div class="heart">❤️</div>
+<!-- START -->
 
-    <h1>Hey You...</h1>
+<div class="card" id="start">
 
-    <p>
-      I made something special just for you. 🥰
-      <br>
-      Are you ready for a little surprise?
-    </p>
+<div class="heart">❤️</div>
 
-    <button onclick="openSurprise()">
-      Open My Surprise ✨
-    </button>
+<h1>Hey You...</h1>
 
-  </div>
+<p>
+I made something special just for you. 🥰
+<br>
+Are you ready?
+</p>
 
+<button onclick="startSurprise()">
+Open My Surprise ✨
+</button>
 
-  <div class="card hidden" id="surprise">
+</div>
 
-    <div class="heart">💖</div>
 
-    <img src="sanu copy.jpg" class="photo" alt="My Sanu">
+<!-- MAIN -->
 
-    <h1>For My Sanu ❤️</h1>
+<div class="card hidden" id="main">
 
-    <p class="message">
-      I Love You So Much Sanu ❤️
-      <br><br>
-      Mero Budi, Mero Mutu 🫶
-      <br><br>
-      Chuppa Chuppa ❤️💋🫶
-    </p>
+<div class="heart">💖</div>
 
-    <button onclick="moreLove()">
-      One More Surprise 💕
-    </button>
+<h1>For My Sanu ❤️</h1>
 
-  </div>
+<div class="gallery">
 
+<img id="galleryPhoto" src="sanu copy.jpg">
 
-  <div class="card hidden" id="final">
+<br>
 
-    <div class="heart">🌹</div>
+<button onclick="previousPhoto()">⬅️</button>
 
-    <h1>One Last Thing... ❤️</h1>
+<button onclick="nextPhoto()">➡️</button>
 
-    <p class="final">
-      No matter how many surprises I make,
-      <br><br>
-      You will always be
-      <br>
-      my favorite one. 🥹❤️
-      <br><br>
-      I Love You, Sanu. 💋🫶
-    </p>
+</div>
 
-  </div>
+<h2>💌 A Little Letter</h2>
 
+<p id="letter"></p>
 
-  <script>
+<button onclick="showReasons()">
+Why I Love You 💗
+</button>
 
-    // Create night sky
-    for (let i = 0; i < 90; i++) {
+</div>
 
-      const star = document.createElement("div");
 
-      star.className = "star";
+<!-- REASONS -->
 
-      star.style.left = Math.random() * 100 + "vw";
-      star.style.top = Math.random() * 100 + "vh";
+<div class="card hidden" id="reasons">
 
-      star.style.animationDelay =
-        Math.random() * 3 + "s";
+<div class="heart">💗</div>
 
-      document.body.appendChild(star);
-    }
+<h1>Why I Love You</h1>
 
+<div class="reason" id="reasonText">
+Your smile ❤️
+</div>
 
-    function openSurprise() {
+<button onclick="nextReason()">
+Next ❤️
+</button>
 
-      const music = document.getElementById("bgMusic");
+<button onclick="openSecret()">
+Secret Message 🔐
+</button>
 
-      music.play();
+</div>
 
-      document.getElementById("start")
-        .classList.add("hidden");
 
-      document.getElementById("surprise")
-        .classList.remove("hidden");
+<!-- SECRET -->
 
-      createHearts(45);
-    }
+<div class="card hidden" id="secret">
 
+<div class="heart">👀</div>
 
-    function moreLove() {
+<h1>Don't Open This...</h1>
 
-      createHearts(70);
-      createRoses(30);
+<div class="secretBox">
 
-      setTimeout(() => {
+<p>
+Okay... you opened it. 😂❤️
+</p>
 
-        document.getElementById("surprise")
-          .classList.add("hidden");
+<p>
+You are one of the most special people
+in my life.
+<br><br>
+And I have one last surprise for you...
+🥹❤️
+</p>
 
-        document.getElementById("final")
-          .classList.remove("hidden");
+</div>
 
-      }, 1200);
-    }
+<button onclick="finalSurprise()">
+One Last Surprise 💍
+</button>
 
+</div>
 
-    function createHearts(number) {
 
-      for (let i = 0; i < number; i++) {
+<!-- FINAL -->
 
-        const heart = document.createElement("div");
+<div class="card hidden" id="final">
 
-        heart.className = "falling";
+<div class="bigLove">💍</div>
 
-        heart.innerHTML =
-          ["❤️", "💕", "💖", "💗", "💘", "🫶"]
-          [Math.floor(Math.random() * 6)];
+<h1 class="finalTitle">
+Sanu... ❤️
+</h1>
 
-        heart.style.left =
-          Math.random() * 100 + "vw";
+<p>
 
-        heart.style.fontSize =
-          (18 + Math.random() * 25) + "px";
+No matter how many surprises I make,
 
-        heart.style.animationDuration =
-          (3 + Math.random() * 4) + "s";
+<br><br>
 
-        document.body.appendChild(heart);
+<strong>
+You will always be my favorite one.
+</strong>
 
-        setTimeout(() => {
-          heart.remove();
-        }, 7000);
-      }
-    }
+<br><br>
 
+I Love You So Much. 🥹❤️
 
-    function createRoses(number) {
+<br><br>
 
-      for (let i = 0; i < number; i++) {
+Will you stay with me forever?
 
-        const rose = document.createElement("div");
+</p>
 
-        rose.className = "rose";
+<button onclick="yesLove()">
+YES ❤️
+</button>
 
-        rose.innerHTML = "🌹";
+</div>
 
-        rose.style.left =
-          Math.random() * 100 + "vw";
 
-        rose.style.animationDuration =
-          (4 + Math.random() * 3) + "s";
+<script>
 
-        document.body.appendChild(rose);
+/* STARS */
 
-        setTimeout(() => {
-          rose.remove();
-        }, 7000);
-      }
-    }
+for(let i=0;i<90;i++){
 
-  </script>
+const star=document.createElement("div");
+
+star.className="star";
+
+star.style.left=Math.random()*100+"vw";
+
+star.style.top=Math.random()*100+"vh";
+
+star.style.animationDelay=Math.random()*3+"s";
+
+document.body.appendChild(star);
+
+}
+
+
+/* PHOTOS */
+
+const photos=[
+"sanu copy.jpg"
+];
+
+let photoIndex=0;
+
+
+/* LETTER */
+
+const letterText=
+"Sanu... ❤️\n\n" +
+"I just wanted to make something small for you.\n\n" +
+"Maybe it is not perfect, but I made it with all my heart. 🥹\n\n" +
+"I hope this little surprise makes you smile today. ❤️";
+
+let letterIndex=0;
+
+
+/* REASONS */
+
+const reasons=[
+"Your smile makes my day. ❤️",
+"You always make me feel special. 🥹",
+"I love the way you care about me. 🫶",
+"You are my favorite person. 💗",
+"Simply... I love you because you are YOU. ❤️"
+];
+
+let reasonIndex=0;
+
+
+/* START */
+
+function startSurprise(){
+
+document.getElementById("bgMusic").play();
+
+document.getElementById("start").classList.add("hidden");
+
+document.getElementById("main").classList.remove("hidden");
+
+typeLetter();
+
+createHearts(40);
+
+}
+
+
+/* TYPEWRITER */
+
+function typeLetter(){
+
+const letter=document.getElementById("letter");
+
+if(letterIndex<letterText.length){
+
+letter.innerHTML+=
+letterText.charAt(letterIndex)
+.replace(/\n/g,"<br>");
+
+letterIndex++;
+
+setTimeout(typeLetter,45);
+
+}
+
+}
+
+
+/* GALLERY */
+
+function nextPhoto(){
+
+if(photos.length>0){
+
+photoIndex=(photoIndex+1)%photos.length;
+
+document.getElementById("galleryPhoto").src=
+photos[photoIndex];
+
+}
+
+createHearts(10);
+
+}
+
+
+function previousPhoto(){
+
+if(photos.length>0){
+
+photoIndex=
+(photoIndex-1+photos.length)%photos.length;
+
+document.getElementById("galleryPhoto").src=
+photos[photoIndex];
+
+}
+
+}
+
+
+/* REASONS */
+
+function showReasons(){
+
+document.getElementById("main").classList.add("hidden");
+
+document.getElementById("reasons").classList.remove("hidden");
+
+}
+
+
+function nextReason(){
+
+reasonIndex++;
+
+if(reasonIndex>=reasons.length){
+
+reasonIndex=0;
+
+}
+
+document.getElementById("reasonText").innerHTML=
+reasons[reasonIndex];
+
+createHearts(15);
+
+}
+
+
+/* SECRET */
+
+function openSecret(){
+
+document.getElementById("reasons").classList.add("hidden");
+
+document.getElementById("secret").classList.remove("hidden");
+
+createRoses(20);
+
+}
+
+
+/* FINAL */
+
+function finalSurprise(){
+
+document.getElementById("secret").classList.add("hidden");
+
+document.getElementById("final").classList.remove("hidden");
+
+createRoses(40);
+
+createHearts(50);
+
+}
+
+
+/* YES */
+
+function yesLove(){
+
+createRoses(80);
+
+createHearts(100);
+
+setTimeout(function(){
+
+alert(
+"I Love You Forever, Sanu ❤️🥹💋"
+);
+
+},1000);
+
+}
+
+
+/* HEARTS */
+
+function createHearts(number){
+
+for(let i=0;i<number;i++){
+
+const heart=document.createElement("div");
+
+heart.className="falling";
+
+heart.innerHTML=
+["❤️","💕","💖","💗","💘","🫶"]
+[Math.floor(Math.random()*6)];
+
+heart.style.left=
+Math.random()*100+"vw";
+
+heart.style.fontSize=
+(18+Math.random()*25)+"px";
+
+heart.style.animationDuration=
+(3+Math.random()*4)+"s";
+
+document.body.appendChild(heart);
+
+setTimeout(()=>{
+heart.remove();
+},7000);
+
+}
+
+}
+
+
+/* ROSES */
+
+function createRoses(number){
+
+for(let i=0;i<number;i++){
+
+const rose=document.createElement("div");
+
+rose.className="rose";
+
+rose.innerHTML="🌹";
+
+rose.style.left=
+Math.random()*100+"vw";
+
+rose.style.animationDuration=
+(4+Math.random()*3)+"s";
+
+document.body.appendChild(rose);
+
+setTimeout(()=>{
+rose.remove();
+},7000);
+
+}
+
+}
+
+</script>
 
 </body>
 </html>

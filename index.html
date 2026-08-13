@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>For My Sanu ❤</title>
+  <title>For My Sanu ❤️</title>
 
   <style>
     * {
@@ -27,7 +27,7 @@
       width: 90%;
       max-width: 520px;
       padding: 35px 25px;
-      background: rgba(255, 255, 255, 0.2);
+      background: rgba(255,255,255,0.2);
       border-radius: 30px;
       backdrop-filter: blur(12px);
       box-shadow: 0 20px 60px rgba(0,0,0,0.25);
@@ -57,6 +57,7 @@
       border: 5px solid white;
       margin: 10px auto 15px;
       display: block;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
     }
 
     button {
@@ -105,9 +106,13 @@
 
 <body>
 
+  <audio id="bgMusic" loop>
+    <source src="55.mp3" type="audio/mpeg">
+  </audio>
+
   <div class="card" id="start">
 
-    <div class="heart">❤</div>
+    <div class="heart">❤️</div>
 
     <h1>Hey You...</h1>
 
@@ -123,21 +128,20 @@
 
   </div>
 
-
   <div class="card hidden" id="surprise">
 
     <div class="heart">💖</div>
 
     <img src="sanu copy.jpg" class="photo" alt="My Sanu">
 
-    <h1>For My Sanu ❤</h1>
+    <h1>For My Sanu ❤️</h1>
 
     <p class="message">
-      I Love You So Much Sanu ❤
+      I Love You So Much Sanu ❤️
       <br><br>
       Mero Budi, Mero Mutu 🫶
       <br><br>
-      Chuppa Chuppa ❤💋🫶
+      Chuppa Chuppa ❤️💋🫶
     </p>
 
     <button onclick="moreLove()">
@@ -146,18 +150,26 @@
 
   </div>
 
-
   <script>
 
     function openSurprise() {
+
+      const music = document.getElementById("bgMusic");
+
+      music.play();
+
       document.getElementById("start").classList.add("hidden");
+
       document.getElementById("surprise").classList.remove("hidden");
+
       createHearts(40);
     }
 
     function moreLove() {
+
       createHearts(70);
-      alert("I Love You So Much Sanu ❤💋🫶");
+
+      alert("I Love You So Much Sanu ❤️💋🫶");
     }
 
     function createHearts(number) {
@@ -169,7 +181,7 @@
         heart.className = "falling-heart";
 
         heart.innerHTML =
-          ["❤", "💕", "💖", "💗", "💘", "🫶"]
+          ["❤️","💕","💖","💗","💘","🫶"]
           [Math.floor(Math.random() * 6)];
 
         heart.style.left = Math.random() * 100 + "vw";
